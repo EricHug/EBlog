@@ -1,0 +1,93 @@
+@import './default.less';
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    line-height: 1.8;
+    font-family: "Microsoft yahei", tahoma, arial, sans-serif;
+    font-size: @axFont;
+    color: @defaultColor;
+    background: @backgroundColor;
+    margin: 0 auto;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a img {
+    border: 0;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #999;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+a:active,
+a:focus {
+    background-color: transparent;
+}
+
+a:active,
+a:focus,
+input:active,
+input:focus,
+button:active,
+button:focus {
+    outline: none;
+}
+
+li {
+    list-style: none;
+}
+
+::-webkit-input-placeholder {
+    color: #ccc;
+}
+
+// input[type="text"],
+// input[type="password"],
+// input[type="button"],
+// textarea {
+//     -webkit-appearance: none;
+//     appearance: none;
+//     outline: none;
+//     border: none;
+// }
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #fff;
+    color: #666;
+}
+
+.hide {
+    display: none !important;
+}
+
+.ellipsis {
+    //单行文本溢出
+    overflow: hidden;
+    text-overflow: ellipsis; //文本溢出显示省略号
+    white-space: nowrap; //文本不会换行（单行文本溢出）
+}
+
+.mult_line_ellipsis {
+    //多行文本溢出
+    overflow: hidden;
+    text-overflow: ellipsis; //文本溢出显示省略号
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+

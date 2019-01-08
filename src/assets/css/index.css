@@ -1,0 +1,90 @@
+/*
+定义外边距
+@marginTop 上距
+*/
+/*
+定义外边距
+@marginBottom 下距
+*/
+/*
+定义外边距
+@marginLeft 左距
+*/
+/*
+定义外边距
+@marginRight 右距
+*/
+/*
+定义圆角
+@radius 圆角大小
+*/
+/*背景渐变
+@start  渐变开始颜色
+@end  结束颜色
+*/
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  line-height: 1.8;
+  font-family: "Microsoft yahei", tahoma, arial, sans-serif;
+  font-size: 13px;
+  color: #71767a;
+  background: #F6F6F6;
+  margin: 0 auto;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+a img {
+  border: 0;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #999;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:active,
+a:focus {
+  background-color: transparent;
+}
+a:active,
+a:focus,
+input:active,
+input:focus,
+button:active,
+button:focus {
+  outline: none;
+}
+li {
+  list-style: none;
+}
+::-webkit-input-placeholder {
+  color: #ccc;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  background-color: #fff;
+  color: #666;
+}
+.hide {
+  display: none !important;
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mult_line_ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

@@ -1,0 +1,71 @@
+// color
+@defaultColor:#71767a;
+@backgroundColor: #F6F6F6;
+@orange: #ff6634;
+@blue:#0f91dd;
+@color333:#333;
+@colorccc:#ccc;
+@color666:#666;
+@color999:#999;
+@colorddd:#ddd;
+@fontBlue:#00b7ee;
+@colorA:#007aff;
+@colorLightBlue:#30bafb;
+@white:#fff;
+@black:#000;
+@success:#42ca48;
+@false:#ff0000;
+@glod:#b48845;
+
+// size
+@axFont: 13px;
+@axContentWidth: 800px;
+
+// common func
+/*
+定义外边距
+@marginTop 上距
+*/
+.mt(@marginTop:20){
+    margin-top:@marginTop+'px';
+}
+/*
+定义外边距
+@marginBottom 下距
+*/
+.mb(@marginBottom:20px){
+    margin-top:20px;
+}
+/*
+定义外边距
+@marginLeft 左距
+*/
+.ml(@marginTop:20px){
+    margin-top:20px;
+}
+/*
+定义外边距
+@marginRight 右距
+*/
+.mr(@marginTop:20px){
+    margin-top:20px;
+}
+/*
+定义圆角
+@radius 圆角大小
+*/
+.round(@radius:5px){
+    border-radius:@radius;
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+}
+/*背景渐变
+@start  渐变开始颜色
+@end  结束颜色
+*/
+.bg(@start :#00ffff,@end :#9fffff){
+    background:-webkit-gradient(linear,0 0, 0 100%,from(@start),to(@end));
+    background:-moz-linear-gradient(top,@start ,@end);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=@start ,
+                endColorstr=@end ,grandientType=0);
+}
