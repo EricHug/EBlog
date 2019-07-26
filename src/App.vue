@@ -34,4 +34,8 @@
 
 <style lang="less">
   @import './assets/css/index.less';
+  .el-input__suffix{
+    top:1px;
+    right:4px;
+  }
 </style>

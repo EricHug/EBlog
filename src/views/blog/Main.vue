@@ -1,11 +1,17 @@
 <template>
   <div class="blog">
+    <el-form size="mini" class="fixed_form" @submit.native.prevent>
+      <el-form-item label="" :inline="true" prop="name">
+        <el-input v-model.trim="title" maxlength="20" style="width:180px" @keyup.native.enter="getList" clearable></el-input>
+        <el-button type="primary" @click="getList">搜索</el-button>
+      </el-form-item>
+    </el-form>
     <LightTab :list="tabList" @changeTab="changeTab" />
     <div class="blog_list" v-show="item.active" v-for="(item,index) in blogList" :key="item.type">
       <ul style="min-height:400px;">
         <li class="blog_item" v-for="(citem,cindex) in item.acticles" :key="citem.id">
           <router-link :to="'/blog/detail/'+citem.id+'?type='+query.type" class="title">{{citem.title}}</router-link>
-          <p class="content mult_line_ellipsis">{{citem.content}}</p>
+          <p class="content mult_line_ellipsis" style="-webkit-box-orient: vertical;">{{citem.content}}</p>
         </li>
         <li v-if="item.acticles==0">
           <p class="emergency_tip">一片空白。。还没写呢("▔□▔)！！！</p>
@@ -31,6 +37,7 @@
     },
     data() {
       return {
+        title: '',
         query: {
           pageNum: 1,
           pageSize: 3,
@@ -120,7 +127,11 @@
       },
       getList() {
         let self = this
-        BlogApi.queryByPage(self.query).then(res => {
+        if(self.title !== ''){
+          self.query.pageNum = 1
+        }
+        let query = Object.assign(self.query,{title:self.title})
+        BlogApi.queryByPage(query).then(res => {
           let data = res.data.data
           if (res.data.code === 200) {
             self.$set(self.blogList, self.tabShowIndex, {
@@ -208,6 +219,13 @@
     .emergency_tip {
       text-align: center;
       padding-top: 188px;
+    }
+  }
+  .fixed_form{
+    position:absolute;
+    top:7px;
+    .el-input__suffix{
+      margin-top:100px
     }
   }
 

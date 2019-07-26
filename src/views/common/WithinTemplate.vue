@@ -71,6 +71,7 @@
     padding: 16px 93px;
     background-color: @backgroundColor;
     z-index: 66;
+    overflow: scroll;
     .wt_header {
       width: 100%;
       line-height: 32px;
