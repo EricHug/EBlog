@@ -23,10 +23,12 @@ export const constantRouterMap = [
             {
                 path: 'main',
                 component: _import('blog/Main'),
+                name: 'BlogMain',
                 meta: { title: '最新动态' }
             },
             {
                 path: 'detail/:id',
+                name: 'BlogDetail',
                 component: _import('blog/Detail'),
                 meta: { title: '最新动态' }
             },

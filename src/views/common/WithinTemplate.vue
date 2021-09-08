@@ -11,7 +11,9 @@
         <h1 class="cur_title">{{title}}</h1>
         <p>
           <a href="javascript:;" v-if="time">{{time}}</a>&nbsp;
-          <router-link :to="categoryLink" v-if="category">In {{category}}</router-link>
+          <router-link :to="{
+            name:'BlogMain'
+          }">In home</router-link>
         </p>
       </div>
       <div class="next_post">

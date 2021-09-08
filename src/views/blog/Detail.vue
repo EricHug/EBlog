@@ -7,11 +7,12 @@
   </div>
 </template>
 <script>
-  import { 
+  import {
     mapGetters
   } from 'vuex'
   import BlogApi from '@/api/blog'
   import WithinTemplate from '@/views/common/WithinTemplate'
+  import POSTS from '@/json/posts.json'
   export default {
     name: 'BlogDetail',
     components: {
@@ -30,7 +31,8 @@
           categoryLink: '',
         },
         prevId: '',
-        nextId: ''
+        nextId: '',
+        posts: POSTS.RECORDS
       }
     },
     watch: {
@@ -68,25 +70,48 @@
       },
       getDetail() {
         let self = this
-        BlogApi.queryAroundById({
-          id: self.id,
-          type: self.type
-        }).then(res => {
-          let data = res.data.data
-          if (res.data.code === 200) {
-            Object.assign(self.post, {
-              title: data['cur'].title,
-              content: data['cur'].content,
-              time: data['cur'].createtime.slice(0, 10),
-              previous: data['prev']?data['prev'].title:null,
-              next: data['next']?data['next'].title:null,
-              category: data['cur'].type == 0? '散记':'技术小文',
-              categoryLink: '/blog/main?type=' + data['cur'].type
-            })
-            self.prevId = data['prev']?data['prev'].id:''
-            self.nextId = data['next']?data['next'].id:''
+        let curIndex = 0
+        console.log(111,this.posts)
+        this.post = this.posts.find((item,index)=>{
+          if(item.id == this.id){
+            curIndex =  index
+            return true
           }
         })
+        console.log(2222,this.post)
+
+        let len = this.posts.length
+        this.prevPost = curIndex === 0?this.posts[len-1]:this.posts[curIndex-1]
+        this.nextPost = (curIndex+1) === len ? this.posts[0]:this.posts[curIndex+1]
+        this.prevId = this.prevPost['id']
+        this.nextId = this.nextPost['id']
+
+        if(this.prevId){
+          this.post.previous = this.prevPost.title
+        }
+        if(this.nextId){
+          this.post.next = this.nextPost.title
+        }
+
+        // BlogApi.queryAroundById({
+        //   id: self.id,
+        //   type: self.type
+        // }).then(res => {
+        //   let data = res.data.data
+        //   if (res.data.code === 200) {
+        //     Object.assign(self.post, {
+        //       title: data['cur'].title,
+        //       content: data['cur'].content,
+        //       time: data['cur'].createtime.slice(0, 10),
+        //       previous: data['prev']?data['prev'].title:null,
+        //       next: data['next']?data['next'].title:null,
+        //       category: data['cur'].type == 0? '散记':'技术小文',
+        //       categoryLink: '/blog/main?type=' + data['cur'].type
+        //     })
+        //     self.prevId = data['prev']?data['prev'].id:''
+        //     self.nextId = data['next']?data['next'].id:''
+        //   }
+        // })
       }
     }
   }
